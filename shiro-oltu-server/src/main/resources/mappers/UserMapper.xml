@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dwarf.repository.UserRepository">
+
+	<resultMap id="BaseResultMap" type="com.dwarf.bean.User">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="username" property="username" />
+		<result column="password" property="password" />
+		<result column="salt" property="salt" />
+	</resultMap>
+	
+    <select id="findOne" resultMap="BaseResultMap" parameterType="java.lang.Long">  
+        select  
+        *  
+        from oauth2_user  
+        where id = #{id}  
+    </select>
+    
+    <select id="findByUsername" resultMap="BaseResultMap" parameterType="java.lang.String">  
+        select  
+        *  
+        from oauth2_user  
+        where username = #{username}  
+    </select>
+</mapper>

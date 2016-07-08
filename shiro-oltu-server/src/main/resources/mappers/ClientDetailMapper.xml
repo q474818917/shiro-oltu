@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dwarf.repository.ClientDetailRepository">
+
+	<resultMap id="BaseResultMap" type="com.dwarf.bean.ClientDetail">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="clientId" property="client_id" />
+		<result column="clientName" property="client_name" />
+		<result column="clientSecret" property="client_secret" />
+	</resultMap>
+	
+    <select id="findOne" resultMap="BaseResultMap" parameterType="java.lang.Long">  
+        select  
+        *  
+        from oauth2_client  
+        where id = #{id}  
+    </select>
+    
+    <select id="findByClientId" resultMap="BaseResultMap" parameterType="java.lang.String">  
+        select  
+        *  
+        from oauth2_client  
+        where client_id = #{clientId}  
+    </select>
+    
+    <select id="findByClientSecret" resultMap="BaseResultMap" parameterType="java.lang.String">  
+        select  
+        *  
+        from oauth2_client  
+        where client_secret = #{clientSecret}  
+    </select>
+</mapper>

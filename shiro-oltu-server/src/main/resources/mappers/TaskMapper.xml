@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dwarf.repository.TaskBatisRepository">
+	<resultMap id="BaseResultMap" type="com.dwarf.bean.Task">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<insert id="insert" parameterType="com.dwarf.bean.Task">  
+        insert into task(  
+            id,   
+            name
+        )  
+        values (  
+            #{id},   
+            #{name} 
+        )  
+    </insert> 
+    
+    <select id="get" resultMap="BaseResultMap" parameterType="java.lang.Long">  
+        select  
+        *  
+        from task  
+        where id = #{id}  
+    </select>
+</mapper>

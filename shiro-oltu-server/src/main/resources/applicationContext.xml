@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd 
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+		
+	<context:component-scan base-package="com.dwarf">
+	</context:component-scan>
+	
+    <context:property-placeholder location="classpath*:*.properties" ignore-unresolvable="true" />
+	<context:annotation-config/>
+	
+	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close" >
+    	<property name="driverClassName" value="${jdbc_driver}"/>
+	    <property name="url" value="${jdbc_url}"/>
+	    <property name="username" value="${jdbc_username}"/>
+	    <property name="password" value="${jdbc_password}"/>
+	    <property name="maxActive" value="20"/>
+	    <property name="initialSize" value="1"/>
+	    <property name="maxWait" value="60000"/>
+	    <property name="maxIdle" value="20"/>
+	    <property name="minIdle" value="3"/>
+	    <property name="removeAbandoned" value="true"/>
+	    <property name="removeAbandonedTimeout" value="180"/>
+	    <property name="connectionProperties" value="clientEncoding=UTF-8"/>
+  	</bean>
+	
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="mapperLocations" value="classpath:mappers/*Mapper.xml"/>
+		<property name="typeAliasesPackage" value="com.dwarf.bean"/>
+    </bean>
+    
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.dwarf" />
+		<property name="annotationClass" value="com.dwarf.repository.MyBatisRepository"/>
+	</bean>
+    
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+</beans>

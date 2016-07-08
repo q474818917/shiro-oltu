@@ -1,0 +1,214 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  
+  <parent>
+    <groupId>com.dwarf</groupId>
+    <artifactId>shiro-oltu</artifactId>
+    <version>1.0.0</version>
+  </parent>
+
+  <artifactId>shiro-oltu-client</artifactId>
+  <packaging>war</packaging>
+  <name>shiro-oltu-client Maven Webapp</name>
+  <url>http://maven.apache.org</url> 
+  
+  <properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<mybatis-version>3.3.1</mybatis-version>
+		<spring-version>4.1.4.RELEASE</spring-version>
+		<log4j-version>1.2.9</log4j-version>
+		<commons-lang-version>2.6</commons-lang-version>
+		<jedis-version>2.6.2</jedis-version>
+		<fastjson-version>1.2.5</fastjson-version>
+		<oltu.version>1.0.0</oltu.version>
+        <shiro.version>1.2.3</shiro.version>
+	</properties>
+  
+  <!-- <distributionManagement>
+		<snapshotRepository>
+			<id>nexus-snapshots</id>
+			<name>Nexus Snapshot Repository</name>
+			<url>http://repo.guanaihui.cn/nexus/content/repositories/snapshots/</url>
+		</snapshotRepository>
+
+		<repository>
+			<id>nexus-releases</id>
+			<name>Nexus Release Repository</name>
+			<url>http://repo.guanaihui.cn/nexus/content/repositories/releases/</url>
+		</repository>
+	</distributionManagement>
+
+	<repositories>
+		<repository>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+			<id>public</id>
+			<name>Public Repositories</name>
+			<url>http://repo.guanaihui.cn/nexus/content/groups/public/</url>
+		</repository>
+	</repositories>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>public</id>
+			<name>Public Repositories</name>
+			<url>http://repo.guanaihui.cn/nexus/content/groups/public/</url>
+		</pluginRepository>
+	</pluginRepositories>  -->
+	
+  <dependencies>
+  	<dependency>
+        <groupId>commons-collections</groupId>
+        <artifactId>commons-collections</artifactId>
+        <version>3.2.1</version>
+    </dependency>
+    <dependency>
+    	<groupId>org.slf4j</groupId>
+    	<artifactId>slf4j-log4j12</artifactId>
+    	<version>1.7.12</version>
+    </dependency>
+    <dependency>
+    	<groupId>junit</groupId>
+    	<artifactId>junit</artifactId>
+    	<version>4.12</version>
+    </dependency>
+    <dependency>
+    	<groupId>org.springframework</groupId>
+    	<artifactId>spring-core</artifactId>
+    	<version>4.1.7.RELEASE</version>
+    </dependency>
+    <dependency>
+    	<groupId>org.springframework</groupId>
+    	<artifactId>spring-web</artifactId>
+    	<version>4.1.7.RELEASE</version>
+    </dependency>
+    <dependency>
+    	<groupId>org.springframework</groupId>
+    	<artifactId>spring-webmvc</artifactId>
+    	<version>4.1.7.RELEASE</version>
+    </dependency>
+    <dependency>
+    	<groupId>org.springframework</groupId>
+    	<artifactId>spring-test</artifactId>
+    	<version>4.1.7.RELEASE</version>
+    </dependency>
+    <dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-context-support</artifactId>
+		<version>4.1.7.RELEASE</version>
+	</dependency>
+    <dependency>
+    	<groupId>javax.servlet</groupId>
+    	<artifactId>javax.servlet-api</artifactId>
+    	<version>3.1.0</version>
+    </dependency>
+    <dependency>
+    	<groupId>com.alibaba</groupId>
+    	<artifactId>fastjson</artifactId>
+    	<version>1.2.6</version>
+    </dependency>
+    <dependency>
+    	<groupId>com.alibaba</groupId>
+    	<artifactId>druid</artifactId>
+    	<version>1.0.15</version>
+    </dependency>
+    <dependency>
+    	<groupId>mysql</groupId>
+    	<artifactId>mysql-connector-java</artifactId>
+    	<version>5.1.36</version>
+    </dependency>
+    <dependency>
+    	<groupId>org.mybatis</groupId>
+    	<artifactId>mybatis</artifactId>
+    	<version>3.3.0</version>
+    </dependency>
+    <dependency>
+    	<groupId>org.mybatis</groupId>
+    	<artifactId>mybatis-spring</artifactId>
+    	<version>1.2.3</version>
+    </dependency>
+    <dependency>
+    	<groupId>org.apache.httpcomponents</groupId>
+    	<artifactId>httpclient</artifactId>
+    	<version>4.5</version>
+    </dependency>
+    <dependency>
+    	<groupId>ch.hsr</groupId>
+    	<artifactId>geohash</artifactId>
+    	<version>1.1.0</version>
+    </dependency>
+    <dependency>
+    	<groupId>org.apache.commons</groupId>
+    	<artifactId>commons-lang3</artifactId>
+    	<version>3.4</version>
+    </dependency>
+    <dependency>
+    	<groupId>org.apache.poi</groupId>
+    	<artifactId>poi</artifactId>
+    	<version>3.12</version>
+    </dependency>
+    <dependency>
+    	<groupId>com.google.guava</groupId>
+    	<artifactId>guava</artifactId>
+    	<version>18.0</version>
+    	<type>bundle</type>
+    </dependency>
+    <dependency>
+    	<groupId>org.hsqldb</groupId>
+    	<artifactId>hsqldb</artifactId>
+    	<version>2.3.3</version>
+    </dependency>
+    <dependency>
+    	<groupId>org.springframework</groupId>
+    	<artifactId>spring-jdbc</artifactId>
+    	<version>4.1.7.RELEASE</version>
+    </dependency>
+    <dependency>
+    	<groupId>org.quartz-scheduler</groupId>
+    	<artifactId>quartz</artifactId>
+    	<version>2.2.1</version>
+    </dependency>
+    <dependency>
+		<groupId>com.corundumstudio.socketio</groupId>
+		<artifactId>netty-socketio</artifactId>
+		<version>1.7.8</version>
+	</dependency>
+	<dependency>
+		<groupId>javax.servlet</groupId>
+		<artifactId>jstl</artifactId>
+		<version>1.2</version>
+	</dependency>
+	<dependency>
+		<groupId>com.alibaba</groupId>
+		<artifactId>dubbo</artifactId>
+		<version>2.5.3</version>
+		<exclusions>
+			<exclusion>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring</artifactId>
+			</exclusion>
+		</exclusions>
+	</dependency>
+	<dependency>
+		<groupId>com.github.sgroschupf</groupId>
+		<artifactId>zkclient</artifactId>
+		<version>0.1</version>
+	</dependency>
+	
+  </dependencies>
+  
+  <build>
+    <finalName>shiro-oltu-client</finalName>
+    <plugins>  
+	    <plugin>
+		   <groupId>org.apache.felix</groupId>
+		   <artifactId>maven-bundle-plugin</artifactId>
+		   <extensions>true</extensions>
+		</plugin>  
+	</plugins>
+	
+  </build>
+  
+</project>
